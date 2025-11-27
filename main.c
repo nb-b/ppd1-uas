@@ -69,7 +69,7 @@ void load_transactions_from_file(BookingManager *bm);
 void generate_report(HotelSystem *hotel_system);
 void press_any_key_to_continue();
 
-// ############# MODUL 2 ###################
+// ############# MODUL 1 ###################
 void initialize_rooms(RoomManager *rm) {
     // Initialize some sample rooms
     Room rooms[] = {
@@ -90,8 +90,8 @@ void initialize_rooms(RoomManager *rm) {
 void display_rooms(RoomManager *rm) {
     CLEAR_SCREEN();
     printf("\n=== DAFTAR KAMAR HOTEL ===\n");
-    printf("No.Kamar\tTipe\t\tHarga/Malam\tStatus\t\tMax.Tamu\n");
-    printf("------------------------------------------------------------------------\n");
+    printf("%-8s\t%-12s\t%-16s\t%-10s\t%s\n", "No.Kamar", "Tipe", "Harga/Malam", "Status", "Max.Tamu");
+    printf("-----------------------------------------------------------------------------\n");
     
     for(int i = 0; i < rm->room_count; i++) {
         Room room = rm->rooms[i];
@@ -102,7 +102,7 @@ void display_rooms(RoomManager *rm) {
             strcpy(status, "Terisi");
         }
         
-        printf("%d\t\t%s\t\tRp%.0f\t%s\t\t%d\n", 
+        printf("%-8d\t%-12s\tRp%-14.0f\t%-10s\t%d\n", 
                room.room_number, 
                room.type, 
                room.price_per_night, 
